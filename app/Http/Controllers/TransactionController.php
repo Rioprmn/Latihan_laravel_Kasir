@@ -286,4 +286,23 @@ public function checkout(Request $request)
     }
     }
 
+
+    // app/Http/Controllers/TransactionController.php
+public function bulkDelete(Request $request)
+{
+    // Validasi apakah ada ID yang dipilih
+    if (!$request->ids || count($request->ids) == 0) {
+        return back()->with('error', 'Silakan pilih transaksi yang ingin dihapus.');
+    }
+
+    try {
+        // Menghapus transaksi yang ID-nya ada dalam array
+        \App\Models\Transaction::whereIn('id', $request->ids)->delete();
+
+        return back()->with('success', count($request->ids) . ' transaksi berhasil dihapus.');
+    } catch (\Exception $e) {
+        return back()->with('error', 'Gagal menghapus transaksi: ' . $e->getMessage());
+    }
+}
+
 }

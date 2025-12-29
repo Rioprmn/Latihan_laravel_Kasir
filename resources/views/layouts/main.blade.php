@@ -65,8 +65,9 @@
 <body>
     <div class="sidebar" style="display: flex; flex-direction: column; height: 100vh;">
     {{-- Atas: Brand --}}
-    <div class="sidebar-brand">KASIR-KU</div>
-    
+    <div class="sidebar-brand">
+    {{ $shop_setting->shop_name ?? 'KASIR-KU' }}
+    </div>
     {{-- Tengah: Menu (Mengisi sisa ruang) --}}
     <ul class="sidebar-menu" style="flex-grow: 1; list-style: none; padding: 0;">
     {{-- Dashboard --}}

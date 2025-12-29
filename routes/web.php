@@ -35,6 +35,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/', [TransactionController::class, 'index'])->name('index');
         Route::get('/create', [TransactionController::class, 'create'])->name('create');
         Route::delete('/reset', [TransactionController::class, 'reset'])->name('reset');
+        Route::delete('/bulk-delete', [TransactionController::class, 'bulkDelete'])->name('bulkDelete');
         Route::post('/store', [TransactionController::class, 'store'])->name('store');
         Route::get('/{id}', [TransactionController::class, 'show'])->name('show');
     });
