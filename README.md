@@ -46,7 +46,7 @@ Pastikan Anda sudah menginstal **PHP 8.2**, **Composer**, dan **Node.js**.
 # Clone repository
 git clone [https://github.com/Rioprmn/Project_laravel_Kasir.git](https://github.com/Rioprmn/Project_laravel_Kasir.git)
 cd Project_laravel_Kasir.
-
+---
 ### 3. Konfigurasi Database
 Salin file .env.example menjadi .env dan sesuaikan pengaturan database serta timezone Anda:
 
@@ -61,11 +61,11 @@ DB_PASSWORD=
 
 # Setting Waktu Indonesia
 APP_TIMEZONE=Asia/Jakarta
-
+---
 # Install dependency PHP & JS
 composer install
 npm install && npm run build
-
+---
 ### 4. Migrasi & Jalankan
 Bash
 
@@ -78,3 +78,4 @@ php artisan migrate --seed
 
 # Jalankan server lokal
 php artisan serve
+### bash
