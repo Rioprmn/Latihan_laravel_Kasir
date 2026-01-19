@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Transaction;
+use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\TransactionItem;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -322,4 +323,17 @@ public function bulkDelete(Request $request)
     }
 }
 
+}
+
+public function exportPdf()
+{
+    $transactions = Transaction::with('user')->latest()->get();
+    $totalOmzet = $transactions->sum('total');
+
+    $pdf = Pdf::loadView('transactions.pdf', [
+        'transactions' => $transactions,
+        'totalOmzet'   => $totalOmzet
+    ])->setPaper('A4', 'portrait');
+
+    return $pdf->download('laporan-transaksi.pdf');
 }

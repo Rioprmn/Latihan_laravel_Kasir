@@ -34,6 +34,10 @@
                 <a href="{{ route('transactions.export') }}" class="btn" style="background: #0ee995; color: white; text-decoration: none; font-size: 0.85rem; padding: 8px 15px; border-radius: 20px; display: flex; align-items: center; gap: 8px;">
                     📥 Download CSV
                 </a>
+                <a href="{{ route('transactions.exportPdf') }}" class="btn" 
+                style="background: #ef4444; color: white; text-decoration: none; font-size: 0.85rem; padding: 8px 15px; border-radius: 20px; display: flex; align-items: center; gap: 8px;">
+                    📄 Download PDF
+                </a>
             </div>
 
             {{-- Tombol Hapus Terpilih --}}

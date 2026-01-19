@@ -37,7 +37,8 @@ Route::middleware(['auth'])->group(function () {
 
     // TRANSACTIONS & EXPORT
     Route::prefix('transactions')->name('transactions.')->group(function () {
-        Route::get('/export', [TransactionController::class, 'export'])->name('export'); // Pindahkan ke sini agar rapi
+        Route::get('/export', [TransactionController::class, 'export'])->name('export');
+        Route::get('/export-pdf', [TransactionController::class, 'exportPdf'])->name('exportPdf');
         Route::get('/', [TransactionController::class, 'index'])->name('index');
         Route::get('/create', [TransactionController::class, 'create'])->name('create');
         Route::delete('/reset', [TransactionController::class, 'reset'])->name('reset');
