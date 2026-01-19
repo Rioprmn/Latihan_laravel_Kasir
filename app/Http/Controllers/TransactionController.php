@@ -5,10 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Transaction;
-use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\TransactionItem;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+// Conditional import akan di-handle di method exportPdf()
 
 class TransactionController extends Controller
 {
@@ -323,14 +323,24 @@ public function bulkDelete(Request $request)
 
 public function exportPdf()
 {
-    $transactions = Transaction::with('user')->latest()->get();
-    $totalOmzet = $transactions->sum('total');
+    try {
+        // Check if Pdf class exists (barryvdh/laravel-dompdf must be installed)
+        if (!class_exists('Barryvdh\DomPDF\Facade\Pdf')) {
+            return back()->with('error', 'Package PDF belum diinstall. Jalankan: composer require barryvdh/laravel-dompdf');
+        }
 
-    $pdf = Pdf::loadView('transactions.pdf', [
-        'transactions' => $transactions,
-        'totalOmzet'   => $totalOmzet
-    ])->setPaper('A4', 'portrait');
+        $transactions = Transaction::with('user')->latest()->get();
+        $totalOmzet = $transactions->sum('total');
 
-    return $pdf->download('laporan-transaksi.pdf');
+        // Use app() to get Pdf facade
+        $pdf = app('dompdf.wrapper')->loadView('transactions.pdf', [
+            'transactions' => $transactions,
+            'totalOmzet'   => $totalOmzet
+        ])->setPaper('A4', 'portrait');
+
+        return $pdf->download('laporan-transaksi-' . date('Y-m-d-His') . '.pdf');
+    } catch (\Exception $e) {
+        return back()->with('error', 'Gagal membuat PDF: ' . $e->getMessage());
+    }
 }
 }
