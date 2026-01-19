@@ -62,6 +62,7 @@
                             <form action="{{ route('cart.update') }}" method="POST" style="margin: 0; display: flex; align-items: center; gap: 8px;">
                                 @csrf
                                 <input type="hidden" name="product_id" value="{{ $id }}">
+                                <input type="hidden" name="action" value="update">
                                 
                                 {{-- Input Quantity Manual --}}
                                 <input type="number" name="qty" value="{{ $item['qty'] }}" min="1" max="999" 
@@ -77,7 +78,7 @@
                                 </small>
                                 
                                 {{-- Tombol Update --}}
-                                <button type="submit" name="action" value="update"
+                                <button type="submit"
                                     style="border: none; background: #10b981; color: white; width: 36px; height: 36px; border-radius: 8px; cursor: pointer; font-weight: bold; transition: 0.2s; font-size: 0.9rem;"
                                     onmouseover="this.style.background='#059669'; this.style.transform='scale(1.05)'" 
                                     onmouseout="this.style.background='#10b981'; this.style.transform='scale(1)'">✓</button>

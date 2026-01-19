@@ -37,6 +37,34 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // Handle quantity input change untuk real-time subtotal update
+    const quantityInputs = document.querySelectorAll('input[name="qty"]');
+    quantityInputs.forEach(input => {
+        input.addEventListener('change', function() {
+            // Get parent form
+            const form = this.closest('form');
+            if (form) {
+                // Set action to update
+                const actionInput = form.querySelector('input[name="action"]');
+                if (actionInput) {
+                    actionInput.value = 'update';
+                }
+                // Auto submit form
+                form.submit();
+            }
+        });
+
+        // Add input styling on focus
+        input.addEventListener('focus', function() {
+            this.style.borderColor = '#10b981';
+            this.style.boxShadow = '0 0 0 3px rgba(16, 185, 129, 0.1)';
+        });
+
+        input.addEventListener('blur', function() {
+            this.style.boxShadow = 'none';
+        });
+    });
+
     // Tambahkan Logika Search agar aman & memudahkan kasir
     if (searchInput) {
         searchInput.addEventListener('keyup', function() {

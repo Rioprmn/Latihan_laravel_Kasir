@@ -111,42 +111,59 @@ class TransactionController extends Controller
 
     public function updateCart(Request $request)
     {
-    // 1. Validasi awal
-    $request->validate([
-        'product_id' => 'required',
-        'action' => 'required|in:increase,decrease' // Menerima increase atau decrease
-    ]);
+        // 1. Validasi awal
+        $request->validate([
+            'product_id' => 'required',
+            'qty' => 'required|integer|min:1', // Validasi qty untuk input manual
+            'action' => 'sometimes|in:increase,decrease,update' // Update action baru
+        ]);
 
-    $cart = session()->get('cart', []);
+        $cart = session()->get('cart', []);
 
-    if (!isset($cart[$request->product_id])) {
-        return back()->with('error', 'Produk tidak ditemukan di cart');
-    }
-
-    $product = Product::findOrFail($request->product_id);
-    $currentQty = $cart[$request->product_id]['qty'];
-
-    // 2. Logika Tambah atau Kurang
-    if ($request->action === 'increase') {
-        // Cek stok sebelum nambah
-        if ($currentQty + 1 > $product->stock) {
-            return back()->with('error', 'Stok tidak mencukupi!');
+        if (!isset($cart[$request->product_id])) {
+            return back()->with('error', 'Produk tidak ditemukan di cart');
         }
-        $cart[$request->product_id]['qty']++;
-    } else {
-        // Logika Kurang
-        if ($currentQty > 1) {
-            $cart[$request->product_id]['qty']--;
-        } else {
-            // Kalau sisa 1 dikurang lagi, hapus dari keranjang
-            unset($cart[$request->product_id]);
+
+        $product = Product::findOrFail($request->product_id);
+        $currentQty = $cart[$request->product_id]['qty'];
+        $newQty = (int) $request->qty;
+
+        // 2. Logika berdasarkan action
+        if ($request->action === 'update' || $request->action === null) {
+            // Handle input manual quantity
+            
+            // Validasi stok
+            if ($newQty > $product->stock) {
+                return back()->with('error', 'Stok tidak mencukupi! Stok tersedia: ' . $product->stock);
+            }
+
+            if ($newQty >= 1) {
+                $cart[$request->product_id]['qty'] = $newQty;
+            } else {
+                // Kalau 0 atau negative, hapus dari keranjang
+                unset($cart[$request->product_id]);
+                return back()->with('success', 'Produk dihapus dari keranjang');
+            }
+        } else if ($request->action === 'increase') {
+            // Cek stok sebelum nambah
+            if ($currentQty + 1 > $product->stock) {
+                return back()->with('error', 'Stok tidak mencukupi!');
+            }
+            $cart[$request->product_id]['qty']++;
+        } else if ($request->action === 'decrease') {
+            // Logika Kurang
+            if ($currentQty > 1) {
+                $cart[$request->product_id]['qty']--;
+            } else {
+                // Kalau sisa 1 dikurang lagi, hapus dari keranjang
+                unset($cart[$request->product_id]);
+            }
         }
-    }
 
-    // 3. Simpan balik ke session
-    session()->put('cart', $cart);
+        // 3. Simpan balik ke session
+        session()->put('cart', $cart);
 
-    return back(); // Refresh halaman dengan data terbaru
+        return back(); // Refresh halaman dengan data terbaru
     }
 
 
