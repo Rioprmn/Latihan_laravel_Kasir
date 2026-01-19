@@ -34,9 +34,7 @@
                 <a href="{{ route('transactions.export') }}" class="btn" style="background: linear-gradient(135deg, #0ee995 0%, #0bc17e 100%); color: white; text-decoration: none; font-size: 0.9rem; padding: 10px 18px; border-radius: 20px; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 12px rgba(14, 233, 149, 0.3); transition: all 0.3s ease; white-space: nowrap;">
                     📥 Download CSV
                 </a>
-                <a href="{{ route('transactions.exportPdf') }}" class="btn" style="background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%); color: white; text-decoration: none; font-size: 0.9rem; padding: 10px 18px; border-radius: 20px; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3); transition: all 0.3s ease; white-space: nowrap;">
-                    📄 Download PDF
-                </a>
+                
             </div>
 
             {{-- Tombol Hapus Terpilih --}}
@@ -99,6 +97,9 @@
                         <td colspan="6" style="text-align: center; padding: 50px 0;">
                             <div style="font-size: 2rem; margin-bottom: 10px;">📂</div>
                             <h4 style="margin: 0; color: #94a3b8;">Belum ada transaksi tercatat</h4>
+                            <a href="{{ route('transactions.exportPdf') }}" class="btn" style="background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%); color: white; text-decoration: none; font-size: 0.9rem; padding: 10px 18px; border-radius: 20px; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3); transition: all 0.3s ease; white-space: nowrap;">
+                    📄 Download PDF
+                </a>
                         </td>
                     </tr>
                     @endforelse
