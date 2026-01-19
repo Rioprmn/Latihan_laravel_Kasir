@@ -119,6 +119,7 @@
 </div>
     <div class="main-content">
         @yield('content')
+        <x-footer />
     </div>
 
     @stack('scripts')

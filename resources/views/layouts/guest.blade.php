@@ -42,5 +42,12 @@
         </p>
     </div>
 
+    <!-- Footer -->
+    <div class="fixed bottom-0 left-0 right-0 text-center py-4 text-slate-600 text-xs bg-slate-900 bg-opacity-80 border-t border-slate-800">
+        <p>
+            Nama: <span class="text-slate-200 font-semibold">Rio Permana</span> • NPM: <span class="text-slate-200 font-semibold">23552011057</span>
+        </p>
+    </div>
+
 </body>
 </html>

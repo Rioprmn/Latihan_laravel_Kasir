@@ -107,7 +107,41 @@
 
             <div class="hidden md:block relative h-96">
                 <div class="absolute inset-0 gradient-primary rounded-2xl opacity-20 blur-3xl"></div>
-                <div class="relative bg-white rounded-2xl shadow-2xl p-6 animate-float">
+                
+                <div class="relative bg-white rounded-2xl shadow-2xl p-6 hover:scale-[1.02] transition">
+                    <!-- Foto Produk -->
+                    <div class="aspect-square bg-gray-100 rounded-xl overflow-hidden">
+                        <img 
+                            src="https://via.placeholder.com/500x500?text=Product+Image"
+                            alt="Product Image"
+                            class="w-full h-full object-cover"
+                        >
+                    </div>
+
+                    <!-- Info Produk -->
+                    <div class="mt-4 space-y-2">
+                        <h3 class="text-lg font-semibold text-gray-800 truncate">
+                            Product Name
+                        </h3>
+
+                        <p class="text-sm text-gray-500 line-clamp-2">
+                            Short product description goes here.
+                        </p>
+
+                        <div class="flex items-center justify-between pt-2">
+                            <span class="text-lg font-bold text-accent">
+                                $99.00
+                            </span>
+
+                            <button class="px-4 py-2 text-sm rounded-lg bg-accent text-white hover:opacity-90">
+                                Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+
+                {{-- <div class="relative bg-white rounded-2xl shadow-2xl p-6 animate-float">
                     <div class="space-y-4">
                         <div class="h-12 bg-gray-200 rounded-lg animate-pulse"></div>
                         <div class="grid grid-cols-3 gap-2">
@@ -120,7 +154,7 @@
                             <div class="h-3 bg-gray-200 rounded animate-pulse w-1/2"></div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>
@@ -182,7 +216,7 @@
             </div>
 
             <!-- Feature 5 -->
-            <div class="card-hover bg-white p-8 rounded-xl shadow-lg">
+            {{-- <div class="card-hover bg-white p-8 rounded-xl shadow-lg">
                 <div class="w-14 h-14 gradient-primary rounded-lg flex items-center justify-center mb-6">
                     <i class="fas fa-users text-white text-2xl"></i>
                 </div>
@@ -190,7 +224,7 @@
                 <p class="text-gray-600">
                     Support admin dan kasir dengan hak akses berbeda, tracking aktivitas per user.
                 </p>
-            </div>
+            </div> --}}
 
             <!-- Feature 6 -->
             <div class="card-hover bg-white p-8 rounded-xl shadow-lg">
@@ -207,7 +241,7 @@
 </section>
 
 <!-- ================= STATS SECTION ================= -->
-<section class="py-20 md:py-28">
+{{-- <section class="py-20 md:py-28">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
             <div class="text-center">
@@ -228,7 +262,7 @@
             </div>
         </div>
     </div>
-</section>
+</section> --}}
 
 <!-- ================= CTA SECTION ================= -->
 <section class="gradient-primary text-white py-20 md:py-28 relative overflow-hidden">
@@ -246,7 +280,7 @@
             Bergabunglah dengan ribuan pemilik toko yang telah mempercayai Kasir-Ku untuk mengelola bisnis mereka dengan lebih efisien.
         </p>
         
-        <div class="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+        {{-- <div class="flex flex-col sm:flex-row gap-4 justify-center pt-4">
             <a href="{{ route('login') }}"
                class="inline-block bg-accent text-primary px-8 py-4 rounded-lg font-bold hover:shadow-2xl transition transform hover:scale-105 text-center">
                 <i class="fas fa-arrow-right mr-2"></i>Login Sekarang
@@ -255,7 +289,7 @@
                class="inline-block bg-white bg-opacity-20 text-white px-8 py-4 rounded-lg font-bold hover:bg-opacity-30 transition border border-white text-center">
                 <i class="fas fa-envelope mr-2"></i>Hubungi Kami
             </a>
-        </div>
+        </div> --}}
     </div>
 </section>
 
@@ -292,7 +326,7 @@
         </div>
         
         <div class="border-t border-gray-800 pt-8 text-center text-sm">
-            <p>&copy; {{ date('Y') }} Kasir-Ku. All rights reserved. | Dibuat dengan <span class="text-accent">❤</span> oleh Rio Permana</p>
+            <p>&copy; {{ date('Y') }} Kasir-Ku. All rights reserved. | Dibuat <span class="text-accent"></span> oleh Rio Permana NPM 23552011057</p>
         </div>
     </div>
 </footer>
