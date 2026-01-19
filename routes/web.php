@@ -6,11 +6,17 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SettingController;
+use Illuminate\Support\Facades\Auth;
 // TAMBAHKAN INI jika kamu punya CartController terpisah
 // use App\Http\Controllers\CartController; 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', fn() => redirect()->route('dashboard'));
+Route::get('/', function () {
+    if (Auth::check()) {
+        return redirect()->route('dashboard');
+    }
+    return view('landing');
+})->name('landing');
 
 Route::middleware(['auth'])->group(function () {
     
