@@ -302,10 +302,8 @@ public function checkout(Request $request)
     } catch (\Exception $e) {
         return redirect()->back()->with('error', 'Gagal mereset laporan: ' . $e->getMessage());
     }
-    }
+}
 
-
-    // app/Http/Controllers/TransactionController.php
 public function bulkDelete(Request $request)
 {
     // Validasi apakah ada ID yang dipilih
@@ -323,8 +321,6 @@ public function bulkDelete(Request $request)
     }
 }
 
-}
-
 public function exportPdf()
 {
     $transactions = Transaction::with('user')->latest()->get();
@@ -336,4 +332,5 @@ public function exportPdf()
     ])->setPaper('A4', 'portrait');
 
     return $pdf->download('laporan-transaksi.pdf');
+}
 }
