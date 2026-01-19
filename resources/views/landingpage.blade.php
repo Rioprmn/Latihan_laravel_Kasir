@@ -107,54 +107,42 @@
 
             <div class="hidden md:block relative h-96">
                 <div class="absolute inset-0 gradient-primary rounded-2xl opacity-20 blur-3xl"></div>
-                
-                <div class="relative bg-white rounded-2xl shadow-2xl p-6 hover:scale-[1.02] transition">
-                    <!-- Foto Produk -->
-                    <div class="aspect-square bg-gray-100 rounded-xl overflow-hidden">
-                        <img 
-                            src="https://via.placeholder.com/500x500?text=Product+Image"
-                            alt="Product Image"
-                            class="w-full h-full object-cover"
-                        >
-                    </div>
-
-                    <!-- Info Produk -->
-                    <div class="mt-4 space-y-2">
-                        <h3 class="text-lg font-semibold text-gray-800 truncate">
-                            Product Name
-                        </h3>
-
-                        <p class="text-sm text-gray-500 line-clamp-2">
-                            Short product description goes here.
-                        </p>
-
-                        <div class="flex items-center justify-between pt-2">
-                            <span class="text-lg font-bold text-accent">
-                                $99.00
-                            </span>
-
-                            <button class="px-4 py-2 text-sm rounded-lg bg-accent text-white hover:opacity-90">
-                                Add
-                            </button>
+                <div class="relative bg-white rounded-2xl shadow-2xl p-6 animate-float">
+                    <div class="space-y-4">
+                        <!-- Header -->
+                        <div class="h-12 bg-gradient-to-r from-primary to-secondary rounded-lg animate-pulse" style="background: linear-gradient(90deg, #10b981, #059669); animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;"></div>
+                        
+                        <!-- Product Images Grid -->
+                        <div class="grid grid-cols-3 gap-2">
+                            <!-- Product 1 -->
+                            <div class="h-20 rounded-lg overflow-hidden animate-pulse" style="background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%); animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;">
+                                <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 2rem;">
+                                    📱
+                                </div>
+                            </div>
+                            
+                            <!-- Product 2 -->
+                            <div class="h-20 rounded-lg overflow-hidden animate-pulse" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); animation: pulse 2.2s cubic-bezier(0.4, 0, 0.6, 1) infinite;">
+                                <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 2rem;">
+                                    💼
+                                </div>
+                            </div>
+                            
+                            <!-- Product 3 -->
+                            <div class="h-20 rounded-lg overflow-hidden animate-pulse" style="background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%); animation: pulse 2.4s cubic-bezier(0.4, 0, 0.6, 1) infinite;">
+                                <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 2rem;">
+                                    🎧
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Stats -->
+                        <div class="space-y-2 pt-4">
+                            <div class="h-3 bg-gray-200 rounded animate-pulse" style="animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; width: 75%;"></div>
+                            <div class="h-3 bg-gray-200 rounded animate-pulse" style="animation: pulse 2.2s cubic-bezier(0.4, 0, 0.6, 1) infinite; width: 50%;"></div>
                         </div>
                     </div>
                 </div>
-
-
-                {{-- <div class="relative bg-white rounded-2xl shadow-2xl p-6 animate-float">
-                    <div class="space-y-4">
-                        <div class="h-12 bg-gray-200 rounded-lg animate-pulse"></div>
-                        <div class="grid grid-cols-3 gap-2">
-                            <div class="h-16 bg-accent/10 rounded-lg animate-pulse"></div>
-                            <div class="h-16 bg-accent/20 rounded-lg animate-pulse"></div>
-                            <div class="h-16 bg-accent/10 rounded-lg animate-pulse"></div>
-                        </div>
-                        <div class="space-y-2 pt-4">
-                            <div class="h-3 bg-gray-200 rounded animate-pulse w-3/4"></div>
-                            <div class="h-3 bg-gray-200 rounded animate-pulse w-1/2"></div>
-                        </div>
-                    </div>
-                </div> --}}
             </div>
         </div>
     </div>
@@ -296,7 +284,7 @@
 <!-- ================= FOOTER ================= -->
 <footer class="bg-gray-900 text-gray-400 py-12">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid md:grid-cols-4 gap-8 mb-8">
+        {{-- <div class="grid md:grid-cols-4 gap-8 mb-8">
             <div>
                 <h5 class="text-white font-bold mb-4">Kasir-Ku</h5>
                 <p class="text-sm">Sistem kasir modern untuk bisnis retail Anda.</p>
@@ -323,7 +311,7 @@
                     <a href="#" class="hover:text-accent transition"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
-        </div>
+        </div> --}}
         
         <div class="border-t border-gray-800 pt-8 text-center text-sm">
             <p>&copy; {{ date('Y') }} Kasir-Ku. All rights reserved. | Dibuat <span class="text-accent"></span> oleh Rio Permana NPM 23552011057</p>

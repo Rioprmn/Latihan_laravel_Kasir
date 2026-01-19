@@ -59,29 +59,28 @@
 
                         {{-- EDIT QUANTITY --}}
                         <div style="flex: 1; display: flex; align-items: center; gap: 10px; justify-content: center;">
-                            <form action="{{ route('cart.update') }}" method="POST" style="margin: 0; display: flex; align-items: center; background: #f1f5f9; padding: 5px; border-radius: 8px;">
+                            <form action="{{ route('cart.update') }}" method="POST" style="margin: 0; display: flex; align-items: center; gap: 8px;">
                                 @csrf
                                 <input type="hidden" name="product_id" value="{{ $id }}">
                                 
-                                {{-- Tombol Kurang --}}
-                                <button type="submit" name="action" value="decrease" 
-                                    style="border: none; background: white; width: 28px; height: 28px; border-radius: 6px; cursor: pointer; font-weight: bold; color: #64748b; transition: 0.2s;"
-                                    onmouseover="this.style.background='#fee2e2'; this.style.color='#ef4444'" 
-                                    onmouseout="this.style.background='white'; this.style.color='#64748b'">-</button>
+                                {{-- Input Quantity Manual --}}
+                                <input type="number" name="qty" value="{{ $item['qty'] }}" min="1" max="999" 
+                                    style="width: 70px; height: 36px; padding: 6px 10px; border: 2px solid #e2e8f0; border-radius: 8px; font-weight: 700; text-align: center; font-size: 0.95rem; transition: all 0.2s;"
+                                    onmouseover="this.style.borderColor='#10b981'" 
+                                    onmouseout="this.style.borderColor='#e2e8f0'"
+                                    onfocus="this.style.borderColor='#10b981'; this.style.boxShadow='0 0 0 3px rgba(16, 185, 129, 0.1)'"
+                                    onblur="this.style.boxShadow='none'">
                                 
-                                {{-- Angka Qty dan Satuan --}}
-                                <div style="margin: 0 15px; display: flex; flex-direction: column; align-items: center; min-width: 45px;">
-                                    <span style="font-weight: 800; color: #1e293b; line-height: 1;">{{ $item['qty'] }}</span>
-                                    <small style="font-size: 0.65rem; color: #94a3b8; font-weight: 700; text-transform: uppercase; margin-top: 2px;">
-                                        {{ $item['unit'] ?? 'Pcs' }}
-                                    </small>
-                                </div>
+                                {{-- Satuan --}}
+                                <small style="font-size: 0.75rem; color: #94a3b8; font-weight: 700; text-transform: uppercase; min-width: 40px;">
+                                    {{ $item['unit'] ?? 'Pcs' }}
+                                </small>
                                 
-                                {{-- Tombol Tambah --}}
-                                <button type="submit" name="action" value="increase" 
-                                    style="border: none; background: white; width: 28px; height: 28px; border-radius: 6px; cursor: pointer; font-weight: bold; color: #64748b; transition: 0.2s;"
-                                    onmouseover="this.style.background='#dcfce7'; this.style.color='#16a34a'" 
-                                    onmouseout="this.style.background='white'; this.style.color='#64748b'">+</button>
+                                {{-- Tombol Update --}}
+                                <button type="submit" name="action" value="update"
+                                    style="border: none; background: #10b981; color: white; width: 36px; height: 36px; border-radius: 8px; cursor: pointer; font-weight: bold; transition: 0.2s; font-size: 0.9rem;"
+                                    onmouseover="this.style.background='#059669'; this.style.transform='scale(1.05)'" 
+                                    onmouseout="this.style.background='#10b981'; this.style.transform='scale(1)'">✓</button>
                             </form>
                         </div>
 
