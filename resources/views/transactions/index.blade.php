@@ -25,16 +25,16 @@
     @method('DELETE')
 
     <div class="card">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px;">
-            <div style="display: flex; gap: 10px; align-items: center;">
-                <span style="background: #f1f5f9; padding: 8px 15px; border-radius: 20px; font-size: 0.85rem; color: #475569; font-weight: 600;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; flex-wrap: wrap; gap: 15px;">
+            <div style="display: flex; gap: 15px; align-items: center; flex-wrap: wrap;">
+                <span style="background: #f1f5f9; padding: 10px 18px; border-radius: 20px; font-size: 0.9rem; color: #475569; font-weight: 600; white-space: nowrap;">
                     Total: {{ $transactions->count() }} Transaksi
                 </span>
                 
-                <a href="{{ route('transactions.export') }}" class="btn" style="background: #0ee995; color: white; text-decoration: none; font-size: 0.85rem; padding: 8px 15px; border-radius: 20px; display: flex; align-items: center; gap: 8px;">
+                <a href="{{ route('transactions.export') }}" class="btn" style="background: linear-gradient(135deg, #0ee995 0%, #0bc17e 100%); color: white; text-decoration: none; font-size: 0.9rem; padding: 10px 18px; border-radius: 20px; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 12px rgba(14, 233, 149, 0.3); transition: all 0.3s ease; white-space: nowrap;">
                     📥 Download CSV
                 </a>
-                <a href="{{ route('transactions.exportPdf') }}" class="btn" style="background: #ef4444; color: white; text-decoration: none; font-size: 0.85rem; padding: 8px 15px; border-radius: 20px; display: flex; align-items: center; gap: 8px;">
+                <a href="{{ route('transactions.exportPdf') }}" class="btn" style="background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%); color: white; text-decoration: none; font-size: 0.9rem; padding: 10px 18px; border-radius: 20px; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3); transition: all 0.3s ease; white-space: nowrap;">
                     📄 Download PDF
                 </a>
             </div>
@@ -43,7 +43,7 @@
             @if($transactions->count() > 0)
             <button type="submit" id="deleteSelectedBtn" disabled 
                 onclick="return confirm('⚠️ PERINGATAN: Transaksi yang dipilih akan dihapus permanen. Lanjutkan?')"
-                style="background: #fee2e2; color: #ef4444; border: 1px solid #fecaca; font-size: 0.85rem; padding: 8px 15px; border-radius: 20px; cursor: pointer; font-weight: 600; transition: 0.3s; opacity: 0.5;">
+                style="background: #fee2e2; color: #ef4444; border: 1px solid #fecaca; font-size: 0.9rem; padding: 10px 18px; border-radius: 20px; cursor: pointer; font-weight: 600; transition: all 0.3s ease; opacity: 0.5; white-space: nowrap;">
                 🗑️ Hapus Terpilih
             </button>
             @endif
