@@ -15,7 +15,7 @@ Route::get('/', function () {
     if (Auth::check()) {
         return redirect()->route('dashboard');
     }
-    return view('landing');
+    return view('landingpage');
 })->name('landing');
 
 Route::middleware(['auth'])->group(function () {
