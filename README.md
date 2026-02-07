@@ -27,6 +27,7 @@
 - **Database**: MySQL
 - **Frontend**: Blade Templating Engine & Custom CSS
 - **Autentikasi**: Laravel Breeze (Secure Login & Profile Management)
+- **Link public**: http://menejemenshop.my.id/
 
 ---
 
